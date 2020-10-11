@@ -16,7 +16,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -24,13 +23,10 @@ import androidx.appcompat.content.res.AppCompatResources;
 import com.scorpion.dripeditor.R;
 
 
-/**
- * Created by Christophe on 12/07/2014.
- */
 
 public class MaskableFrameLayout extends FrameLayout {
 
-    //Constants
+
     private static final String TAG = "MaskableFrameLayout";
 
     private static final int MODE_ADD = 0;

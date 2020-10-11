@@ -17,7 +17,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.scorpion.dripeditor.MainActivity"
+        <activity android:name="com.scorpion.dripeditor.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,16 +25,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.scorpion.dripeditor.ActivityFolder.GROWUP_CreationList"
+        <activity android:name="com.scorpion.dripeditor.MainActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.scorpion.dripeditor.ActivityFolder.GROWUP_CropPage"
+        <activity android:name="com.scorpion.dripeditor.Activity.MyCreationActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.scorpion.dripeditor.ActivityFolder.GROWUP_EditPage"
+        <activity android:name="com.scorpion.dripeditor.Activity.CropActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.scorpion.dripeditor.Activity.DripEditorActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name="com.scorpion.dripeditor.ActivityFolder.GROWUP_PreviewPage"
+        <activity android:name="com.scorpion.dripeditor.Activity.PreviewImage"
             android:screenOrientation="portrait"></activity>
+
+
+        <activity android:name="com.simpleimagegallery.MainActivitygallery"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.simpleimagegallery.ImageDisplay"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.scorpion.dripeditor.Activity.BGchangeEditor"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.scorpion.dripeditor.Activity.AddText"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.scorpion.dripeditor.Activity.SavedImgActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.scorpion.dripeditor.Activity.StickerTabActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+
     </application>
 
 </manifest>

@@ -17,17 +17,17 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        main {
-            res {
-                srcDirs 'src/main/res', 'src/main/res/drawable-xxhdpi'
-            }
-        }
-    }
+
 }
 
 dependencies {
@@ -36,8 +36,13 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    implementation 'com.jcminarro:RoundKornerLayouts:0.4.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.github.QuadFlask:colorpicker:0.0.15'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
