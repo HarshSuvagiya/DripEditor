@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -73,7 +76,11 @@ public class MainActivity extends Activity {
         });
 
 
-
+        TextView textView =(TextView)findViewById(R.id.privacyPolicy);
+        textView.setClickable(true);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+        String text = "<a href='https://sites.google.com/view/dripeffectautobackgroundchange/home'>Privacy Policy</a>";
+        textView.setText(Html.fromHtml(text));
     }
     public static boolean hasPermissions(Context context, String... permissions) {
         if (!(Build.VERSION.SDK_INT < 23 || context == null || permissions == null)) {
