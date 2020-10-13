@@ -11,13 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.facebook.ads.AdSize;
 import com.scorpion.dripeditor.Activity.BGchangeEditor;
 import com.scorpion.dripeditor.Activity.CropActivity;
 import com.scorpion.dripeditor.Activity.DripEditorActivity;
 import com.scorpion.dripeditor.Activity.Utils;
+import com.scorpion.dripeditor.FBInterstitial;
 import com.scorpion.dripeditor.MyUtils;
 import com.scorpion.dripeditor.R;
 import com.simpleimagegallery.utils.MarginDecoration;
@@ -36,12 +39,23 @@ public class ImageDisplay extends Activity implements itemClickListener {
     ProgressBar load;
     String foldePath;
     TextView folderName;
+    private com.facebook.ads.AdView adViewfb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_display);
+        //banner ad
+        adViewfb = new com.facebook.ads.AdView(ImageDisplay.this, getString(R.string.banner_ad_unit_idfb), AdSize.BANNER_HEIGHT_50);
 
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+        adContainer.setVisibility(View.VISIBLE);
+        // Add the ad view to your activity layout
+        adContainer.addView(adViewfb);
+
+        // Request an ad
+        adViewfb.loadAd();
         folderName = findViewById(R.id.foldername);
         folderName.setText(getIntent().getStringExtra("folderName"));
 
@@ -101,9 +115,15 @@ public class ImageDisplay extends Activity implements itemClickListener {
         } else if (i != 11 || i2 != -1) {
         } else {
             if(MyUtils.dripeffect) {
+
                 if (selectedBit != null) {
-                    startActivity(new Intent(this, DripEditorActivity.class));
-                    finish();
+                    FBInterstitial.getInstance().displayFBInterstitial(ImageDisplay.this, new FBInterstitial.FbCallback() {
+                        public void callbackCall() {
+                            startActivity(new Intent(ImageDisplay.this, DripEditorActivity.class));
+                            finish();
+                        }
+                    });
+
                 } else {
                     MyUtils.Toast(this, getResources().getString(R.string.select_another_image));
                 }
@@ -112,9 +132,14 @@ public class ImageDisplay extends Activity implements itemClickListener {
             {
 
                 if (selectedBit != null) {
-                    Utils.bitmap=selectedBit;
-                    startActivity(new Intent(this, BGchangeEditor.class));
-                    finish();
+                    FBInterstitial.getInstance().displayFBInterstitial(ImageDisplay.this, new FBInterstitial.FbCallback() {
+                        public void callbackCall() {
+                            Utils.bitmap=selectedBit;
+                            startActivity(new Intent(ImageDisplay.this, BGchangeEditor.class));
+                            finish();
+                        }
+                    });
+
                 } else {
                     MyUtils.Toast(this, getResources().getString(R.string.select_another_image));
                 }

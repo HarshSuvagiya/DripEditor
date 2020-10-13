@@ -13,8 +13,10 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.facebook.ads.AdSize;
 import com.scorpion.dripeditor.MyUtils;
 import com.scorpion.dripeditor.R;
+import com.simpleimagegallery.ImageDisplay;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class CropActivity extends Activity {
@@ -25,11 +27,22 @@ public class CropActivity extends Activity {
     LinearLayout layprogress;
     String path;
     Bitmap selectedbit;
-
+    private com.facebook.ads.AdView adViewfb;
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         getWindow().addFlags(1024);
         setContentView((int) R.layout.crop_activity);
+        //banner ad
+        adViewfb = new com.facebook.ads.AdView(CropActivity.this, getString(R.string.banner_ad_unit_idfb), AdSize.BANNER_HEIGHT_50);
+
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+        adContainer.setVisibility(View.VISIBLE);
+        // Add the ad view to your activity layout
+        adContainer.addView(adViewfb);
+
+        // Request an ad
+        adViewfb.loadAd();
         this.path = getIntent().getStringExtra("path");
         init();
         click();

@@ -19,8 +19,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.ads.AdSize;
 import com.scorpion.dripeditor.R;
 import com.simpleimagegallery.utils.MarginDecoration;
 import com.simpleimagegallery.utils.PicHolder;
@@ -36,14 +38,24 @@ public class MainActivitygallery extends Activity implements itemClickListener {
     RecyclerView folderRecycler;
     TextView empty;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
-
+    private com.facebook.ads.AdView adViewfb;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainphoto);
+        //banner ad
+        adViewfb = new com.facebook.ads.AdView(MainActivitygallery.this, getString(R.string.banner_ad_unit_idfb), AdSize.BANNER_HEIGHT_50);
 
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+        adContainer.setVisibility(View.VISIBLE);
+        // Add the ad view to your activity layout
+        adContainer.addView(adViewfb);
+
+        // Request an ad
+        adViewfb.loadAd();
         if(ContextCompat.checkSelfPermission(MainActivitygallery.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED)

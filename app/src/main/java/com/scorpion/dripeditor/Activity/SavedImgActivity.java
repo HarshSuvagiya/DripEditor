@@ -18,9 +18,11 @@ import android.widget.LinearLayout;
 
 import androidx.core.content.FileProvider;
 
+import com.facebook.ads.AdSize;
 import com.scorpion.dripeditor.BuildConfig;
 import com.scorpion.dripeditor.MyUtils;
 import com.scorpion.dripeditor.R;
+import com.simpleimagegallery.ImageDisplay;
 
 import java.io.File;
 
@@ -30,12 +32,24 @@ public class SavedImgActivity extends Activity {
     ImageView img_final, btn_back2;
     File f;
     FrameLayout llexit;
+    private com.facebook.ads.AdView adViewfb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.save_img);
+        //banner ad
+        adViewfb = new com.facebook.ads.AdView(SavedImgActivity.this, getString(R.string.banner_ad_unit_idfb), AdSize.BANNER_HEIGHT_50);
+
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+        adContainer.setVisibility(View.VISIBLE);
+        // Add the ad view to your activity layout
+        adContainer.addView(adViewfb);
+
+        // Request an ad
+        adViewfb.loadAd();
         img_final = (ImageView) findViewById(R.id.img_final);
         btn_share = (ImageView) findViewById(R.id.btn_share);
         btn_delete = (ImageView) findViewById(R.id.btn_delete);

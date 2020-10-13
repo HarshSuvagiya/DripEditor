@@ -12,10 +12,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
 
+import com.facebook.ads.AdSize;
 import com.scorpion.dripeditor.Adapters.StickerAdapter;
 import com.scorpion.dripeditor.R;
 
@@ -30,11 +32,25 @@ public class StickermainActivity extends Fragment implements OnClickListener {
     Button cat_face;
     private StickerAdapter stickadapter;
     private ArrayList<String> stickerList;
+    private com.facebook.ads.AdView adViewfb;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.stickermain_activity, container, false);
+
+        //banner ad
+        adViewfb = new com.facebook.ads.AdView(getActivity(), getActivity().getString(R.string.banner_ad_unit_idfb), AdSize.BANNER_HEIGHT_50);
+
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) rootview.findViewById(R.id.banner_container);
+        adContainer.setVisibility(View.VISIBLE);
+        // Add the ad view to your activity layout
+        adContainer.addView(adViewfb);
+
+        // Request an ad
+        adViewfb.loadAd();
+
         this.Back = (ImageView) rootview.findViewById(R.id.Back);
         this.Back.setOnClickListener(this);
         this.cd_gridview_sticker = (GridView) rootview.findViewById(R.id.cd_gridview_sticker);

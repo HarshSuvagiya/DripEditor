@@ -18,10 +18,12 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.scorpion.dripeditor.Adapters.BackgroundAdapter;
+import com.scorpion.dripeditor.FBInterstitial;
 import com.scorpion.dripeditor.MyUtils;
 import com.scorpion.dripeditor.R;
 import com.scorpion.dripeditor.TouchFolder.MultiTouchListener;
 import com.scorpion.dripeditor.photoeditor_stickerview.StickerViews;
+import com.simpleimagegallery.ImageDisplay;
 import com.simpleimagegallery.MainActivitygallery;
 import com.xpro.camera.lite.utils.NcnnModel;
 import com.xpro.camera.lite.utils.autocut;
@@ -187,10 +189,14 @@ public class BGchangeEditor extends Activity {
                     Utils.bmp = Utils.bitmap;
                     s = getResources().getString(R.string.app_name);
                     SaveImage(Utils.bmp);
-
+                    FBInterstitial.getInstance().displayFBInterstitial(BGchangeEditor.this, new FBInterstitial.FbCallback() {
+                        public void callbackCall() {
                             Intent i = new Intent(BGchangeEditor.this, SavedImgActivity.class);
                             startActivity(i);
                             finish();
+                        }
+                    });
+
 
                 }
             }

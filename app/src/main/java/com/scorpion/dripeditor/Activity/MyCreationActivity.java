@@ -8,15 +8,18 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.ads.AdSize;
 import com.scorpion.dripeditor.Adapters.MyCreationAdapter;
 import com.scorpion.dripeditor.MyUtils;
 import com.scorpion.dripeditor.RVGridSpacing;
 import com.scorpion.dripeditor.Interface.OnMyCommonItem;
 import com.scorpion.dripeditor.R;
+import com.simpleimagegallery.ImageDisplay;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,7 +32,7 @@ public class MyCreationActivity extends Activity {
     ArrayList<File> allfile = new ArrayList<>();
     Context cn = this;
     RecyclerView recyclerView;
-
+    private com.facebook.ads.AdView adViewfb;
     private void click() {
     }
 
@@ -40,6 +43,17 @@ public class MyCreationActivity extends Activity {
         super.onCreate(bundle);
         getWindow().addFlags(1024);
         setContentView((int) R.layout.creation_list);
+        //banner ad
+        adViewfb = new com.facebook.ads.AdView(MyCreationActivity.this, getString(R.string.banner_ad_unit_idfb), AdSize.BANNER_HEIGHT_50);
+
+        // Find the Ad Container
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+        adContainer.setVisibility(View.VISIBLE);
+        // Add the ad view to your activity layout
+        adContainer.addView(adViewfb);
+
+        // Request an ad
+        adViewfb.loadAd();
         init();
         resize();
         click();

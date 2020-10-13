@@ -51,9 +51,13 @@ public class MainActivity extends Activity {
         btnstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FBInterstitial.getInstance().displayFBInterstitial(MainActivity.this, new FBInterstitial.FbCallback() {
+                    public void callbackCall() {
+                        dripeffect=true;
+                        startActivity(new Intent(MainActivity.this, MainActivitygallery.class));
 
-                dripeffect=true;
-                startActivity(new Intent(MainActivity.this, MainActivitygallery.class));
+                    }
+                });
 
             }
         });
@@ -61,8 +65,13 @@ public class MainActivity extends Activity {
         btnbgchanger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dripeffect=false;
-                startActivity(new Intent(MainActivity.this, MainActivitygallery.class));
+                FBInterstitial.getInstance().displayFBInterstitial(MainActivity.this, new FBInterstitial.FbCallback() {
+                    public void callbackCall() {
+                        dripeffect=false;
+                        startActivity(new Intent(MainActivity.this, MainActivitygallery.class));
+
+                    }
+                });
 
             }
         });

@@ -4,4 +4,7 @@
 
     <string name="delete_msg">Are you sure you want to \ndelete this Image ?</string>
 
+    <string name="banner_ad_unit_idfb">375390163592655_375392023592469</string>
+    <string name="interstitial_ad_unit_idfb">375390163592655_375392213592450</string>
+
 </resources>

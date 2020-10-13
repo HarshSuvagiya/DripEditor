@@ -45,7 +45,16 @@
             app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"-->
 
         </com.simpleimagegallery.utils.AutoFitRecyclerView>
-
+        <LinearLayout
+            android:id="@+id/banner_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="3dp"
+            android:orientation="vertical"
+            android:visibility="visible"></LinearLayout>
     </RelativeLayout>
 
 

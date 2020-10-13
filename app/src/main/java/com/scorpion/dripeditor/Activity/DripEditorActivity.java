@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scorpion.dripeditor.Adapters.DripAdapter;
 import com.scorpion.dripeditor.Adapters.DripBgAdapter;
+import com.scorpion.dripeditor.FBInterstitial;
 import com.scorpion.dripeditor.MyUtils;
 import com.scorpion.dripeditor.Interface.OnMyCommonItem;
 import com.scorpion.dripeditor.R;
@@ -137,11 +138,16 @@ public class DripEditorActivity extends Activity {
     private void click() {
         this.btnsave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String saveBitmap = MyUtils.saveBitmap(DripEditorActivity.this.cn, MyUtils.getBitmapFromView(DripEditorActivity.this.layimage), "IMG_");
-                Context context = DripEditorActivity.this.cn;
-//                MyUtils.Toast(context, "Saved : " + saveBitmap);
-                DripEditorActivity EditPage1 = DripEditorActivity.this;
-                EditPage1.startActivity(new Intent(EditPage1.cn, PreviewImage.class).putExtra("path", saveBitmap));
+
+                FBInterstitial.getInstance().displayFBInterstitial(DripEditorActivity.this, new FBInterstitial.FbCallback() {
+                    public void callbackCall() {
+                        String saveBitmap = MyUtils.saveBitmap(DripEditorActivity.this.cn, MyUtils.getBitmapFromView(DripEditorActivity.this.layimage), "IMG_");
+                        Context context = DripEditorActivity.this.cn;
+                        DripEditorActivity EditPage1 = DripEditorActivity.this;
+                        EditPage1.startActivity(new Intent(EditPage1.cn, PreviewImage.class).putExtra("path", saveBitmap));
+                    }
+                });
+
             }
         });
         this.layprogress.setOnClickListener(new View.OnClickListener() {
