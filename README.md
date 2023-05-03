@@ -3,7 +3,7 @@
 Drip photo editor is the new profile picture maker app. There are many exciting dripping effects available in different sizes and colors. Apply the drip effect to your favorite selfie or picture as you like, changing its size and position as you desire :)
 
 ## Screenshots
-<img src="sc1.png" width="250"><img src="sc4.png" width="250"><img src="sc5.png" width="250">
+<img src="sc1.png" width="250">&nbsp;<img src="sc4.png" width="250">&nbsp;<img src="sc5.png" width="250">
 
 ## Social Media
 
